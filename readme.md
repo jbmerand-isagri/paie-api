@@ -22,8 +22,8 @@ http://jbmerand-paie-api.herokuapp.com/remuneration_employes
 
 ### Ajouter un employé
   
-1) [GET] http://jbmerand-paie-api.herokuapp.com/employes/0
-Affiche page et déclenche :
+1) [GET] http://jbmerand-paie-api.herokuapp.com/remuneration_employes
+Déclenche :
     - [GET] /grades : gradeService.recupererGrades() qui va solliciter GradeRepository
         ```JSON
         [
