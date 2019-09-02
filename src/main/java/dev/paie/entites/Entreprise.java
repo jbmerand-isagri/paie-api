@@ -1,7 +1,5 @@
 package dev.paie.entites;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 
 @Entity

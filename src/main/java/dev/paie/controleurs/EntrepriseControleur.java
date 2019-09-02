@@ -1,13 +1,10 @@
 package dev.paie.controleurs;
 
-import dev.paie.entites.Entreprise;
-import dev.paie.repository.EntrepriseRepository;
 import dev.paie.services.EntrepriseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
