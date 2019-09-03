@@ -15,11 +15,21 @@ http://jbmerand-paie-api.herokuapp.com/profils_remuneration
 
 http://jbmerand-paie-api.herokuapp.com/remuneration_employes
 - [POST] crée une rémunération employé
+- [GET] récupérer la liste des employés (rémunérations employé)
 
 ## Les requêtes en back pour...
 
 ### Récupérer des données
-  
+
+Réussite :  
+```
+200
+```
+Echec :
+```
+404
+```
+
 #### Récupérer la liste des grades
 - [GET] /grades
 ```JSON
@@ -27,6 +37,17 @@ http://jbmerand-paie-api.herokuapp.com/remuneration_employes
     "code" : "GRADE_A",
     "nbHeuresBase" : 152.00,
     "tauxBase" : 11.00
+}
+```
+
+### Récupérer la liste des employés (rémunérations employé)
+
+- [GET] /remuneration_employes
+```JSON
+{
+    "dateDeCreation" : "2019-09-03 13:50:56.78",
+    "matricule" : "M0111",
+    "gradeCode" : "GRADE_A"
 }
 ```
 
@@ -73,5 +94,5 @@ Réponse en cas d'erreur :
 ```
 404
     
-ECHEC : {message correspond au type d'erreur}
+ECHEC : {message correspond au type d'erreur recontré}
 ```

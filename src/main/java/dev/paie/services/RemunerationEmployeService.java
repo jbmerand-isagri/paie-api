@@ -1,6 +1,7 @@
 package dev.paie.services;
 
 import dev.paie.controleurs.RemunerationEmployeDto;
+import dev.paie.controleurs.RemunerationEmployeDtoAffichage;
 import dev.paie.entites.Entreprise;
 import dev.paie.entites.Grade;
 import dev.paie.entites.ProfilRemuneration;
@@ -12,6 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RemunerationEmployeService {
@@ -50,7 +55,8 @@ public class RemunerationEmployeService {
                 profilRemunerationService.recupererUnProfilRemunerationParSonCode(dto.getProfilRemunerationCode());
         Entreprise entreprise = entrepriseService.recupererUneEntrepriseParSonCode(dto.getEntrepriseCode());
         if(grade != null && profilRemuneration != null && entreprise != null) {
-            return new RemunerationEmploye(dto.getMatricule(), entreprise, profilRemuneration, grade);
+            ZonedDateTime date = ZonedDateTime.now();
+            return new RemunerationEmploye(dto.getMatricule(), date, entreprise, profilRemuneration, grade);
         } else {
             throw new RemunerationEmployeInvalideException("ERREUR : Données incorrectes (données manquantes...)");
         }
@@ -58,5 +64,16 @@ public class RemunerationEmployeService {
 
     public RemunerationEmploye recupererRemunerationEmployeParMatricule(String matricule) {
         return remunerationEmployeRepository.findByMatricule(matricule);
+    }
+
+    public List<RemunerationEmployeDtoAffichage> recupererListeDesRemunerationEmployesDtoAffichage() {
+        List<RemunerationEmploye> listeRemunerationEmploye = remunerationEmployeRepository.findAll();
+        List<RemunerationEmployeDtoAffichage> listeRemunerationEmployeDtoAffichage = new ArrayList<>();
+
+        for(RemunerationEmploye r : listeRemunerationEmploye) {
+            listeRemunerationEmployeDtoAffichage.add(new RemunerationEmployeDtoAffichage(r));
+        }
+
+        return listeRemunerationEmployeDtoAffichage;
     }
 }

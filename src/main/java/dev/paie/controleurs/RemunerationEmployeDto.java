@@ -1,6 +1,7 @@
 package dev.paie.controleurs;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.ZonedDateTime;
 
 public class RemunerationEmployeDto {
 
@@ -12,6 +13,7 @@ public class RemunerationEmployeDto {
     private String profilRemunerationCode;
     @NotEmpty
     private String gradeCode;
+    private ZonedDateTime dateDeCreation;
 
     public RemunerationEmployeDto() {
         super();

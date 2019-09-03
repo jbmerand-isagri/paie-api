@@ -1,7 +1,7 @@
 package dev.paie.entites;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name="remuneration_employe")
@@ -13,6 +13,8 @@ public class RemunerationEmploye {
 	private Integer id;
 	@Column(name = "matricule", unique = true)
 	private String matricule;
+	@Column(name="date_de_creation")
+	private ZonedDateTime dateDeCreation;
 	@ManyToOne
 	private Entreprise entreprise;
 	@ManyToOne
@@ -24,10 +26,11 @@ public class RemunerationEmploye {
 		super();
 	}
 
-	public RemunerationEmploye(String matricule, @NotNull Entreprise entreprise,
-							   @NotNull ProfilRemuneration profilRemuneration,
-							   @NotNull Grade grade) {
+	public RemunerationEmploye(String matricule, ZonedDateTime dateDeCreation, Entreprise entreprise,
+							   ProfilRemuneration profilRemuneration,
+							   Grade grade) {
 		this.matricule = matricule;
+		this.dateDeCreation = dateDeCreation;
 		this.entreprise = entreprise;
 		this.profilRemuneration = profilRemuneration;
 		this.grade = grade;
@@ -63,5 +66,13 @@ public class RemunerationEmploye {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public ZonedDateTime getDateDeCreation() {
+		return dateDeCreation;
+	}
+
+	public void setDateDeCreation(ZonedDateTime dateDeCreation) {
+		this.dateDeCreation = dateDeCreation;
 	}
 }

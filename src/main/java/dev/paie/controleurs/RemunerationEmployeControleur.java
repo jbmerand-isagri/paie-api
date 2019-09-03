@@ -6,10 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class RemunerationEmployeControleur {
@@ -28,8 +27,16 @@ public class RemunerationEmployeControleur {
         return ResponseEntity.status(201).body("SUCCES : l'employé a bien été ajouté.");
     }
 
+    @RequestMapping(path = "/remuneration_employes", method = RequestMethod.GET)
+    public List<RemunerationEmployeDtoAffichage> afficherLaListeDesRemunerationsEmployes() {
+
+        LOGGER.info("lancement de afficherLaListeDesRemunerationsEmployes");
+        return remunerationEmployeService.recupererListeDesRemunerationEmployesDtoAffichage();
+    }
+
     @ExceptionHandler(RemunerationEmployeInvalideException.class)
     public ResponseEntity<String> handleException(RemunerationEmployeInvalideException e) {
         return ResponseEntity.status(404).body(e.getMessage());
     }
+
 }
