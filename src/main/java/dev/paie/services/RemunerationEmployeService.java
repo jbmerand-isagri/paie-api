@@ -1,7 +1,7 @@
 package dev.paie.services;
 
-import dev.paie.controleurs.RemunerationEmployeDto;
-import dev.paie.controleurs.RemunerationEmployeDtoAffichage;
+import dev.paie.controleurs.dto.RemunerationEmployeDto;
+import dev.paie.controleurs.dto.RemunerationEmployeDtoAffichage;
 import dev.paie.entites.Entreprise;
 import dev.paie.entites.Grade;
 import dev.paie.entites.ProfilRemuneration;
@@ -38,11 +38,18 @@ public class RemunerationEmployeService {
         LOGGER.info("Lancement de ajouterRemunerationEmployeAPartirDuDto()");
         if(dto != null) {
             if(remunerationEmployeValidator.validerUnObjetRemunerationEmployeDTO(dto)) {
-                if(!remunerationEmployeValidator.isMatriculeExistant(dto.getMatricule())) {
-                    RemunerationEmployeDto remunerationEmployeDto = new RemunerationEmployeDto();
-                    RemunerationEmploye remunerationEmploye = parseToRemunerationEmploye(dto);
-                    remunerationEmployeRepository.save(remunerationEmploye);
-                } else throw new RemunerationEmployeInvalideException("ERREUR : Ce matricule est déjà présent.");
+                if(!remunerationEmployeValidator.isMatriculeExistant(dto.getMatricule()) ) {
+                    if(remunerationEmployeValidator.isMatriculeExistantSurCollegueApi(dto.getMatricule())) {
+                        RemunerationEmploye remunerationEmploye = parseToRemunerationEmploye(dto);
+                        remunerationEmployeRepository.save(remunerationEmploye);
+                    } else {
+                        throw new RemunerationEmployeInvalideException("ERREUR : Ce matricule correspond à aucun " +
+                                "collègue sur collegues-api.");
+                    }
+
+                } else throw new RemunerationEmployeInvalideException("ERREUR : Ce matricule est déjà présent dans " +
+                        "paie-api" +
+                        ".");
             } else {
                 throw new RemunerationEmployeInvalideException("ERREUR : Données incorrectes (données manquantes...)");
             }
@@ -56,7 +63,7 @@ public class RemunerationEmployeService {
         Entreprise entreprise = entrepriseService.recupererUneEntrepriseParSonCode(dto.getEntrepriseCode());
         if(grade != null && profilRemuneration != null && entreprise != null) {
             ZonedDateTime date = ZonedDateTime.now();
-            return new RemunerationEmploye(dto.getMatricule(), date, entreprise, profilRemuneration, grade);
+            return new RemunerationEmploye(null, dto.getMatricule(), date, entreprise, profilRemuneration, grade);
         } else {
             throw new RemunerationEmployeInvalideException("ERREUR : Données incorrectes (données manquantes...)");
         }

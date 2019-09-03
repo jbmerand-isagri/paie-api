@@ -1,6 +1,6 @@
 package dev.paie.services;
 
-import dev.paie.controleurs.GradeDto;
+import dev.paie.controleurs.dto.GradeDto;
 import dev.paie.entites.Grade;
 import dev.paie.repository.GradeRepository;
 import org.slf4j.Logger;

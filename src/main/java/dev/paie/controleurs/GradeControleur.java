@@ -1,5 +1,6 @@
 package dev.paie.controleurs;
 
+import dev.paie.controleurs.dto.GradeDto;
 import dev.paie.services.GradeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

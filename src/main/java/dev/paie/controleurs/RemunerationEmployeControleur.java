@@ -1,5 +1,8 @@
 package dev.paie.controleurs;
 
+import dev.paie.controleurs.dto.RemunerationEmployeDto;
+import dev.paie.controleurs.dto.RemunerationEmployeDtoAffichage;
+import dev.paie.exceptions.MatriculeInvalideException;
 import dev.paie.exceptions.RemunerationEmployeInvalideException;
 import dev.paie.services.RemunerationEmployeService;
 import org.slf4j.Logger;
@@ -36,6 +39,11 @@ public class RemunerationEmployeControleur {
 
     @ExceptionHandler(RemunerationEmployeInvalideException.class)
     public ResponseEntity<String> handleException(RemunerationEmployeInvalideException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
+
+    @ExceptionHandler(MatriculeInvalideException.class)
+    public ResponseEntity<String> handleException(MatriculeInvalideException e) {
         return ResponseEntity.status(404).body(e.getMessage());
     }
 

@@ -1,4 +1,4 @@
-package dev.paie.controleurs;
+package dev.paie.controleurs.dto;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.ZonedDateTime;

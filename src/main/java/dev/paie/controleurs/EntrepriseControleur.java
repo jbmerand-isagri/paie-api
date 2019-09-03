@@ -1,5 +1,6 @@
 package dev.paie.controleurs;
 
+import dev.paie.controleurs.dto.EntrepriseDto;
 import dev.paie.services.EntrepriseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

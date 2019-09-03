@@ -1,4 +1,4 @@
-package dev.paie.controleurs;
+package dev.paie.controleurs.dto;
 
 import dev.paie.entites.Entreprise;
 

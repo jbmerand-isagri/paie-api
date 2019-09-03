@@ -1,6 +1,6 @@
 package dev.paie.services;
 
-import dev.paie.controleurs.ProfilRemunerationDto;
+import dev.paie.controleurs.dto.ProfilRemunerationDto;
 import dev.paie.entites.ProfilRemuneration;
 import dev.paie.repository.ProfilRemunerationRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -17,7 +17,17 @@ public class BulletinSalaire {
 	private Periode periode;
 	@Column(name = "prime_exceptionnelle")
 	private BigDecimal primeExceptionnelle;
-	
+
+	public BulletinSalaire() {
+		super();
+	}
+
+	public BulletinSalaire(RemunerationEmploye remunerationEmploye, Periode periode, BigDecimal primeExceptionnelle) {
+		this.remunerationEmploye = remunerationEmploye;
+		this.periode = periode;
+		this.primeExceptionnelle = primeExceptionnelle;
+	}
+
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;
 	}

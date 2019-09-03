@@ -17,6 +17,9 @@ http://jbmerand-paie-api.herokuapp.com/remuneration_employes
 - [POST] crée une rémunération employé
 - [GET] récupérer la liste des employés (rémunérations employé)
 
+http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
+- [POST] crée un bulletin de salaire
+
 ## Les requêtes en back pour...
 
 ### Récupérer des données
@@ -68,7 +71,7 @@ Echec :
 }
 ```
 
-### Ajouter un employé (=une rémunération employé)
+### Ajouter un employé (= une rémunération employé)
 
 Requête  :
 
@@ -87,6 +90,34 @@ Réponse en cas de réussite :
 201
 
 SUCCES : l'employé a bien été ajouté.
+
+```
+Réponse en cas d'erreur :
+
+```
+404
+    
+ECHEC : {message correspond au type d'erreur recontré}
+```
+
+### Créer/insérer un bulletin de salaire
+
+Requête  :
+
+[POST] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
+```JSON
+{
+    "periodeId" : "2",
+    "matriculeCode" : "HJS-JS-56",
+    "primeExceptionnelle" : "300.23"
+}
+```
+
+Réponse en cas de réussite :
+```
+201
+
+SUCCES : le bulletin a été créé.
 
 ```
 Réponse en cas d'erreur :
