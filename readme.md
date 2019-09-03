@@ -6,66 +6,72 @@ API déployée sur HEROKU.
 
 http://jbmerand-paie-api.herokuapp.com/entreprises
 - [GET] donne la liste simplifiée des entreprises (JSON)
-- [POST] crée un employé (depuis du JSON)
 
 http://jbmerand-paie-api.herokuapp.com/grades
 - [GET] donne la liste des grades (JSON)
 
-http://jbmerand-paie-api.herokuapp.com/profils
+http://jbmerand-paie-api.herokuapp.com/profils_remuneration
 - [GET] donne la liste des profils (JSON)
 
 http://jbmerand-paie-api.herokuapp.com/remuneration_employes
-- [POST] crée l'employe
-- [GET] donne la liste des rémunération des employés (JSON)
+- [POST] crée une rémunération employé
 
 ## Les requêtes en back pour...
 
-### Ajouter un employé
+### Récupérer des données
   
-1) [GET] http://jbmerand-paie-api.herokuapp.com/remuneration_employes
-Déclenche :
-    - [GET] /grades : gradeService.recupererGrades() qui va solliciter GradeRepository
-        ```JSON
-        [
-          {
-             "grade" : "GRADE_A",
-             "nbHeuresBase" : 152,
-             "tauxBase" : 11
-          }, // ...
-        ]
-        ```
-    - [GET] /profils : profileService.recupererProfilsRemuneration()
-        ```JSON
-        [
-          {
-             "id" : 1,
-             "code" : "Technicien"
-          }, // ...
-        ]
-        ```
-    - [GET] /entreprises : entrepriseService.recupererEntreprises()
-       ```JSON
-        [
-          {
-             "code" : 'DEV',
-             "denomination" : "Dev Institut"
-          }, // ...
-        ]
-        ```
-2) [POST] http://jbmerand-paie-api.herokuapp.com/remuneration_employes
-    - exemple de JSON envoyé :
-    ```JSON
-    {
-      "matricule" : "cvdfg",
-      "entreprise" : 23, // id de l'entreprise
-      "profilRemuneration" : 2, // id
-      "grade" : "GRADE_A"
-    }
-    ```
-
-En cas d'erreur, un JSON est renvoyé avec le corps et le code de la réponse est 404 :
-```json
+#### Récupérer la liste des grades
+- [GET] /grades
+```JSON
 {
-  "message" : "Erreur de ..." // message de l'erreur
+    "code" : "GRADE_A",
+    "nbHeuresBase" : 152.00,
+    "tauxBase" : 11.00
 }
+```
+
+#### Récupérer la liste des profils de rémunération
+- [GET] /profils_remuneration
+```JSON
+{
+    "code" : "Technicien"
+}
+```
+
+#### Récupérer la liste épurée des entreprises
+- [GET] /entreprises
+```JSON
+{
+    "code" : "DEV",
+    "denomination" : "Dev Institut"
+}
+```
+
+### Ajouter un employé (=une rémunération employé)
+
+Requête  :
+
+[POST] http://jbmerand-paie-api.herokuapp.com/remuneration_employes
+```JSON
+{
+    "matricule" : "HJS-JS-56",
+    "entrepriseCode" : "DEV",
+    "profilRemunerationCode" : "Technicien",
+    "gradeCode" : "GRADE_A"
+}
+```
+
+Réponse en cas de réussite :
+```
+201
+
+SUCCES : l'employé a bien été ajouté.
+
+```
+Réponse en cas d'erreur :
+
+```
+404
+    
+ECHEC : {message correspond au type d'erreur}
 ```

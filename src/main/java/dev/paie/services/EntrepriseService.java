@@ -3,6 +3,7 @@ package dev.paie.services;
 import dev.paie.controleurs.EntrepriseDto;
 import dev.paie.entites.Entreprise;
 import dev.paie.repository.EntrepriseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,11 +12,8 @@ import java.util.List;
 @Service
 public class EntrepriseService {
 
-    private final EntrepriseRepository entrepriseRepository;
-
-    public EntrepriseService(EntrepriseRepository entrepriseRepository) {
-        this.entrepriseRepository = entrepriseRepository;
-    }
+    @Autowired
+    private EntrepriseRepository entrepriseRepository;
 
     public List<EntrepriseDto> recupererListeEntreprisesDto() {
         List<Entreprise> entreprises = entrepriseRepository.findAll();
@@ -26,5 +24,9 @@ public class EntrepriseService {
         }
 
         return entreprisesDto;
+    }
+
+    public Entreprise recupererUneEntrepriseParSonCode(String code) {
+        return entrepriseRepository.findByCodeIgnoreCase(code);
     }
 }
