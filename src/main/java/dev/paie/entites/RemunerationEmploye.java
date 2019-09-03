@@ -1,6 +1,7 @@
 package dev.paie.entites;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="remuneration_employe")
@@ -10,7 +11,7 @@ public class RemunerationEmploye {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "matricule")
+	@Column(name = "matricule", unique = true)
 	private String matricule;
 	@ManyToOne
 	private Entreprise entreprise;
@@ -23,8 +24,9 @@ public class RemunerationEmploye {
 		super();
 	}
 
-	public RemunerationEmploye(String matricule, Entreprise entreprise, ProfilRemuneration profilRemuneration,
-							   Grade grade) {
+	public RemunerationEmploye(String matricule, @NotNull Entreprise entreprise,
+							   @NotNull ProfilRemuneration profilRemuneration,
+							   @NotNull Grade grade) {
 		this.matricule = matricule;
 		this.entreprise = entreprise;
 		this.profilRemuneration = profilRemuneration;

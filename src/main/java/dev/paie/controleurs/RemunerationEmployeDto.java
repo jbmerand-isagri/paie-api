@@ -1,10 +1,16 @@
 package dev.paie.controleurs;
 
+import javax.validation.constraints.NotEmpty;
+
 public class RemunerationEmployeDto {
 
+    @NotEmpty
     private String matricule;
+    @NotEmpty
     private String entrepriseCode;
+    @NotEmpty
     private String profilRemunerationCode;
+    @NotEmpty
     private String gradeCode;
 
     public RemunerationEmployeDto() {

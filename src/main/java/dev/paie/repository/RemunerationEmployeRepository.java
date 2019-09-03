@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RemunerationEmployeRepository extends JpaRepository<RemunerationEmploye, String> {
-
+    RemunerationEmploye findByMatricule(String matricule);
 }
