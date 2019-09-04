@@ -127,3 +127,38 @@ Réponse en cas d'erreur :
     
 ECHEC : {message correspond au type d'erreur recontré}
 ```
+
+### Afficher les bulletins de salaire
+
+Requête :
+
+[GET] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
+
+
+Réponse en cas de réussite :
+````
+200
+
+[
+  {
+    "dateDebut": "2019-02-01",
+    "dateFin": "2019-02-28",
+    "primeExceptionnelle": 876.00,
+    "dateHeureCreation": "2019-09-04T11:56:31.697+02:00",
+    "matriculeCode": "0a5d0a48-993a-4b1f-aa14-9b1a2d87a056",
+    "salaireBrut": 2548.00,
+    "netImposable": 2354.35,
+    "netAPayer": 2286.75
+  },
+  {
+    "dateDebut": "2019-01-01",
+    "dateFin": "2019-01-31",
+    "primeExceptionnelle": 54.56,
+    "dateHeureCreation": "2019-09-04T11:57:08.658+02:00",
+    "matriculeCode": "ad571e9b-e0f0-4676-b2cd-fae1a4cb73fb",
+    "salaireBrut": 3246.5600,
+    "netImposable": 2999.82,
+    "netAPayer": 2912.82
+  }
+]
+```

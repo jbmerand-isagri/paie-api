@@ -2,6 +2,7 @@ package dev.paie.entites;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name="bulletin_salaire")
@@ -17,6 +18,12 @@ public class BulletinSalaire {
 	private Periode periode;
 	@Column(name = "prime_exceptionnelle")
 	private BigDecimal primeExceptionnelle;
+	private ZonedDateTime dateHeureCreation;
+
+	@PrePersist
+	public void prePersist() {
+		dateHeureCreation = ZonedDateTime.now();
+	}
 
 	public BulletinSalaire() {
 		super();
@@ -51,6 +58,14 @@ public class BulletinSalaire {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public ZonedDateTime getDateHeureCreation() {
+		return dateHeureCreation;
+	}
+
+	public void setDateHeureCreation(ZonedDateTime dateHeureCreation) {
+		this.dateHeureCreation = dateHeureCreation;
 	}
 	
 	

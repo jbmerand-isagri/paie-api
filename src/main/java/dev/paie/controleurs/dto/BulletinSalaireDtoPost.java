@@ -1,14 +1,19 @@
 package dev.paie.controleurs.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-public class BulletinSalaireDto {
+public class BulletinSalaireDtoPost {
 
+    @NotNull(message = "id non renseigné.")
     private Integer periodeId;
+    @NotBlank(message = "matricule non renseigné")
     private String matriculeCode;
+    @NotNull(message = "prime exceptionnelle non renseignée")
     private BigDecimal primeExceptionnelle;
 
-    public BulletinSalaireDto(Integer periodeId, String matriculeCode, BigDecimal primeExceptionnelle) {
+    public BulletinSalaireDtoPost(Integer periodeId, String matriculeCode, BigDecimal primeExceptionnelle) {
         this.periodeId = periodeId;
         this.matriculeCode = matriculeCode;
         this.primeExceptionnelle = primeExceptionnelle;
