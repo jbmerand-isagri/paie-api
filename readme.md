@@ -134,31 +134,235 @@ Requête :
 
 [GET] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
 
-
 Réponse en cas de réussite :
-````
+
+```
 200
 
 [
   {
-    "dateDebut": "2019-02-01",
-    "dateFin": "2019-02-28",
-    "primeExceptionnelle": 876.00,
-    "dateHeureCreation": "2019-09-04T11:56:31.697+02:00",
-    "matriculeCode": "0a5d0a48-993a-4b1f-aa14-9b1a2d87a056",
-    "salaireBrut": 2548.00,
-    "netImposable": 2354.35,
-    "netAPayer": 2286.75
-  },
-  {
+    "id": 1,
     "dateDebut": "2019-01-01",
     "dateFin": "2019-01-31",
     "primeExceptionnelle": 54.56,
-    "dateHeureCreation": "2019-09-04T11:57:08.658+02:00",
+    "dateHeureCreation": "2019-09-04T12:19:37.898+02:00",
     "matriculeCode": "ad571e9b-e0f0-4676-b2cd-fae1a4cb73fb",
-    "salaireBrut": 3246.5600,
-    "netImposable": 2999.82,
-    "netAPayer": 2912.82
+    "salaireBrut": 3246.56,
+    "netImposable": 2999.83,
+    "netAPayer": 2912.83
   }
 ]
+```
+
+### Afficher les données d'une feuille de bulletin de salaire
+
+Requête :
+
+[GET] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire/{idDuBulletinDeSalaire}
+
+Réponse en cas de réussite :
+
+```
+200
+
+{
+  "salaire": {
+    "id": 1,
+    "dateDebut": "2019-01-01",
+    "dateFin": "2019-01-31",
+    "primeExceptionnelle": 54.56,
+    "dateHeureCreation": "2019-09-04T16:32:04.074+02:00",
+    "matriculeCode": "e4450752-1609-40cf-96a2-679145423650",
+    "salaireBrut": 3246.56,
+    "netImposable": 2999.83,
+    "netAPayer": 2912.84,
+    "baseSalaireDeBase": 152.00,
+    "tauxSalarialSalaireDeBase": 21.00,
+    "montantSalarialSalaireDeBase": 3192.00
+  },
+  "employe": {
+    "matricule": "e4450752-1609-40cf-96a2-679145423650",
+    "nom": "Durand",
+    "prenoms": "Oliver, Pierre",
+    "dateDeNaissance": "1980-02-29"
+  },
+  "cotisationsNonImposables": {
+    "cotisations": [
+      {
+        "code": "EP01",
+        "libelle": "URSSAF MALADIE - MATERNITE - INVALIDITE",
+        "tauxSalarial": 0.007500,
+        "tauxPatronal": 0.128000,
+        "montantSalarial": 24.34920000,
+        "cotisationsPatronales": 415.55968000,
+        "base": 3246.56
+      },
+      {
+        "code": "EP02",
+        "libelle": "URSSAF SOLIDARITE",
+        "tauxSalarial": 0,
+        "tauxPatronal": 0.003000,
+        "montantSalarial": 0.00,
+        "cotisationsPatronales": 9.73968000,
+        "base": 3246.56
+      },
+      {
+        "code": "EP03",
+        "libelle": "URSSAF ACCIDENT DU TRAVAIL",
+        "tauxSalarial": 0,
+        "tauxPatronal": 0.012000,
+        "montantSalarial": 0.00,
+        "cotisationsPatronales": 38.95872000,
+        "base": 3246.56
+      },
+      {
+        "code": "EP04",
+        "libelle": "URSSAF ALLOC. FAMILIALES",
+        "tauxSalarial": 0,
+        "tauxPatronal": 0.054000,
+        "montantSalarial": 0.00,
+        "cotisationsPatronales": 175.31424000,
+        "base": 3246.56
+      },
+      {
+        "code": "EP05",
+        "libelle": "URSSAF ASS. VIEILLESSE PLAF.",
+        "tauxSalarial": 0.067500,
+        "tauxPatronal": 0.084000,
+        "montantSalarial": 219.14280000,
+        "cotisationsPatronales": 272.71104000,
+        "base": 3246.56
+      },
+      {
+        "code": "EP06",
+        "libelle": "URSSAF ASS. VIEILLESSE DEPLAF.",
+        "tauxSalarial": 0.001000,
+        "tauxPatronal": 0.016000,
+        "montantSalarial": 3.24656000,
+        "cotisationsPatronales": 51.94496000,
+        "base": 3246.56
+      },
+      {
+        "code": "EP07",
+        "libelle": "URSSAF FNAL",
+        "tauxSalarial": 0,
+        "tauxPatronal": 0.001000,
+        "montantSalarial": 0.00,
+        "cotisationsPatronales": 3.24656000,
+        "base": 3246.56
+      },
+      {
+        "code": "SP01",
+        "libelle": "URSSAF CSG NON DEDUCTIBLE",
+        "tauxSalarial": 0.024000,
+        "tauxPatronal": 0,
+        "montantSalarial": 77.91744000,
+        "cotisationsPatronales": 0.00,
+        "base": 3246.56
+      },
+      {
+        "code": "SP02",
+        "libelle": "URSSAF CRDS",
+        "tauxSalarial": 0.005000,
+        "tauxPatronal": 0,
+        "montantSalarial": 16.23280000,
+        "cotisationsPatronales": 0.00,
+        "base": 3246.56
+      }
+    ],
+    "totalRetenueMontantSalarial": 246.73856000,
+    "totalRetenueCotisationsPatronales": 967.47488000
+  },
+  "cotisationsImposables": [
+    {
+      "code": "EP01",
+      "libelle": "URSSAF MALADIE - MATERNITE - INVALIDITE",
+      "tauxSalarial": 0.007500,
+      "tauxPatronal": 0.128000,
+      "montantSalarial": 24.34920000,
+      "cotisationsPatronales": 415.55968000,
+      "base": 3246.56
+    },
+    {
+      "code": "EP02",
+      "libelle": "URSSAF SOLIDARITE",
+      "tauxSalarial": 0,
+      "tauxPatronal": 0.003000,
+      "montantSalarial": 0.00,
+      "cotisationsPatronales": 9.73968000,
+      "base": 3246.56
+    },
+    {
+      "code": "EP03",
+      "libelle": "URSSAF ACCIDENT DU TRAVAIL",
+      "tauxSalarial": 0,
+      "tauxPatronal": 0.012000,
+      "montantSalarial": 0.00,
+      "cotisationsPatronales": 38.95872000,
+      "base": 3246.56
+    },
+    {
+      "code": "EP04",
+      "libelle": "URSSAF ALLOC. FAMILIALES",
+      "tauxSalarial": 0,
+      "tauxPatronal": 0.054000,
+      "montantSalarial": 0.00,
+      "cotisationsPatronales": 175.31424000,
+      "base": 3246.56
+    },
+    {
+      "code": "EP05",
+      "libelle": "URSSAF ASS. VIEILLESSE PLAF.",
+      "tauxSalarial": 0.067500,
+      "tauxPatronal": 0.084000,
+      "montantSalarial": 219.14280000,
+      "cotisationsPatronales": 272.71104000,
+      "base": 3246.56
+    },
+    {
+      "code": "EP06",
+      "libelle": "URSSAF ASS. VIEILLESSE DEPLAF.",
+      "tauxSalarial": 0.001000,
+      "tauxPatronal": 0.016000,
+      "montantSalarial": 3.24656000,
+      "cotisationsPatronales": 51.94496000,
+      "base": 3246.56
+    },
+    {
+      "code": "EP07",
+      "libelle": "URSSAF FNAL",
+      "tauxSalarial": 0,
+      "tauxPatronal": 0.001000,
+      "montantSalarial": 0.00,
+      "cotisationsPatronales": 3.24656000,
+      "base": 3246.56
+    },
+    {
+      "code": "SP01",
+      "libelle": "URSSAF CSG NON DEDUCTIBLE",
+      "tauxSalarial": 0.024000,
+      "tauxPatronal": 0,
+      "montantSalarial": 77.91744000,
+      "cotisationsPatronales": 0.00,
+      "base": 3246.56
+    },
+    {
+      "code": "SP02",
+      "libelle": "URSSAF CRDS",
+      "tauxSalarial": 0.005000,
+      "tauxPatronal": 0,
+      "montantSalarial": 16.23280000,
+      "cotisationsPatronales": 0.00,
+      "base": 3246.56
+    }
+  ]
+}
+```
+
+Réponse en cas d'échec :
+
+```
+404
+
+ERREUR : id non trouvé dans la base de données.
 ```

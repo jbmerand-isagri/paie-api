@@ -48,4 +48,24 @@ public class BulletinSalaireUtils {
          return salaireNetImposable.subtract(sommeDesCotisations);
 
     }
+
+    public BigDecimal calculerTotalRetenueMontantSalarialNonImposables(List<Cotisation> cotisations, BigDecimal salaireBrut) {
+        BigDecimal total = new BigDecimal("0");
+        for (Cotisation c : cotisations) {
+            if(!c.getImposable()&& c.getTauxSalarial() != null) {
+                total = total.add(c.getTauxSalarial().multiply(salaireBrut));
+            }
+        }
+        return total;
+    }
+
+    public BigDecimal calculerTotalRetenueCotisationsPatronalesNonImposables(List<Cotisation> cotisations, BigDecimal salaireBrut) {
+        BigDecimal total = new BigDecimal(("0"));
+        for(Cotisation c : cotisations) {
+            if(!c.getImposable() && c.getTauxPatronal() != null) {
+                total = total.add(c.getTauxPatronal().multiply(salaireBrut));
+            }
+        }
+        return total;
+    }
 }

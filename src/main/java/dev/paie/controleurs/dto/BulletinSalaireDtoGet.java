@@ -6,22 +6,24 @@ import java.time.ZonedDateTime;
 
 public class BulletinSalaireDtoGet {
 
-    private LocalDate dateDebut;
-    private LocalDate dateFin;
-    private BigDecimal primeExceptionnelle;
-    private ZonedDateTime dateHeureCreation;
-    private String matriculeCode;
-    private BigDecimal salaireBrut;
-    private BigDecimal netImposable;
-    private BigDecimal netAPayer;
+    protected Integer id;
+    protected LocalDate dateDebut;
+    protected LocalDate dateFin;
+    protected BigDecimal primeExceptionnelle;
+    protected ZonedDateTime dateHeureCreation;
+    protected String matriculeCode;
+    protected BigDecimal salaireBrut;
+    protected BigDecimal netImposable;
+    protected BigDecimal netAPayer;
 
     public BulletinSalaireDtoGet() {
         super();
     }
 
-    public BulletinSalaireDtoGet(LocalDate dateDebut, LocalDate dateFin, BigDecimal primeExceptionnelle,
+    public BulletinSalaireDtoGet(Integer id, LocalDate dateDebut, LocalDate dateFin, BigDecimal primeExceptionnelle,
                                  ZonedDateTime dateHeureCreation, String matriculeCode, BigDecimal salaireBrut,
                                  BigDecimal netImposable, BigDecimal netAPayer) {
+        this.id = id;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.primeExceptionnelle = primeExceptionnelle;
@@ -30,6 +32,14 @@ public class BulletinSalaireDtoGet {
         this.salaireBrut = salaireBrut;
         this.netImposable = netImposable;
         this.netAPayer = netAPayer;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDate getDateDebut() {

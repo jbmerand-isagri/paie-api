@@ -1,6 +1,7 @@
 package dev.paie.controleurs;
 
 import dev.paie.controleurs.dto.BulletinSalaireDtoGet;
+import dev.paie.controleurs.dto.BulletinSalaireDtoGetFeuille;
 import dev.paie.controleurs.dto.BulletinSalaireDtoPost;
 import dev.paie.exceptions.BulletinSalaireException;
 import dev.paie.exceptions.RemunerationEmployeInvalideException;
@@ -34,8 +35,10 @@ public class BulletinSalaireControleur {
         return bulletinSalaireService.recupererListeBulletinsSalaireDtoGet();
     }
 
-    // TODO : controleur pour un bulletin de salaire
-/*    @GetMapping("/bulletins_salaire/{id}")*/
+    @GetMapping("/bulletins_salaire/{id}")
+    public BulletinSalaireDtoGetFeuille reqAfficherUnBulletinSalaire(@PathVariable Integer id) {
+        return bulletinSalaireService.recupererBulletinSalaireDtoGetFeuilleAPartirIdBulletinSalaire(id);
+    }
 
     @ExceptionHandler(RemunerationEmployeInvalideException.class)
     public ResponseEntity<String> handleException(RemunerationEmployeInvalideException e) {
