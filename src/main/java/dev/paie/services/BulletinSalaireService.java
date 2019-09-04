@@ -70,14 +70,14 @@ public class BulletinSalaireService {
             BigDecimal salaireBrut =
                     bulletinSalaireUtils.calculerSalaireBrut(bS.getRemunerationEmploye().getGrade().getTauxBase(),
                             bS.getRemunerationEmploye().getGrade().getNbHeuresBase(), bS.getPrimeExceptionnelle());
+            salaireBrut = salaireBrut.setScale(2, RoundingMode.UP);
 
             BigDecimal netImposable = bulletinSalaireUtils.calculerNetImposable(salaireBrut,
                     bS.getRemunerationEmploye().getProfilRemuneration().getCotisations());
+            netImposable = netImposable.setScale(2, RoundingMode.UP);
+
             BigDecimal netAPayer = bulletinSalaireUtils.calculerNetAPayer(netImposable,
                     bS.getRemunerationEmploye().getProfilRemuneration().getCotisations());
-
-            salaireBrut = salaireBrut.setScale(2, RoundingMode.UP);
-            netImposable = netImposable.setScale(2, RoundingMode.UP);
             netAPayer = netAPayer.setScale(2, RoundingMode.UP);
 
             listeBulletinsSalaireDtoGet.add(parseBulletinSalaireToDtoGet(bS, matricule, dateDebut, dateFin,

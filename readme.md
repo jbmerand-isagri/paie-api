@@ -14,11 +14,15 @@ http://jbmerand-paie-api.herokuapp.com/profils_remuneration
 - [GET] donne la liste des profils (JSON)
 
 http://jbmerand-paie-api.herokuapp.com/remuneration_employes
-- [POST] crée une rémunération employé
-- [GET] récupérer la liste des employés (rémunérations employé)
+- [POST] crée une rémunération employé (JSON)
+- [GET] récupérer la liste des employés (rémunérations employé) (JSON)
 
 http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
-- [POST] crée un bulletin de salaire
+- [POST] crée un bulletin de salaire (JSON)
+- [GET] affiche la liste des bulletins de salaire (JSON)
+
+http://jbmerand-paie-api.herokuapp.com/bulletins_salaire/{idDuBulletinDeSalaire}
+- [GET] affiche les données d'une feuille de bulletin de salaire (JSON)
 
 ## Les requêtes en back pour...
 
