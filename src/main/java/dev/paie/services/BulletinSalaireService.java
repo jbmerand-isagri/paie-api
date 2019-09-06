@@ -10,6 +10,7 @@ import dev.paie.utils.RemunerationEmployeValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -56,6 +57,7 @@ public class BulletinSalaireService {
         return new BulletinSalaire(remunerationEmploye, periode, dto.getPrimeExceptionnelle());
     }
 
+    @Secured("ROLE_ADMIN")
     public List<BulletinSalaireDtoGet> recupererListeBulletinsSalaireDtoGet() {
         LOGGER.info("recupererListeBulletinsSalaireDtoGet lancé");
 
@@ -85,7 +87,6 @@ public class BulletinSalaireService {
         }
 
         return listeBulletinsSalaireDtoGet;
-
     }
 
     public BulletinSalaireDtoGet parseBulletinSalaireToDtoGet(BulletinSalaire bS, String matricule,

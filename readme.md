@@ -2,26 +2,54 @@
 
 API déployée sur HEROKU.
 
+**INFORMATION** : certaines requêtes ne fonctionnent pas pour le moment (suite à la sécurisation de collegues-api).
+
+
+## S'authentifier
+
+Pour s'authentifier, il convient d'utiliser l'identifiant et le mot de passe d'un compte sur collegues-api.
+
+Les fonctionnalités nécessite un compte avec le rôle d'administrateur, sauf pour la requête GET d'une feuille de paie.
+
+[POST] https://jbmerand-paie-api.herokuapp.com/auth
+
+Compte avec rôle admin :
+
+```JSON
+{
+    "identifiant" : "u1",
+    "motDePasse" : "pass1"
+}
+```
+
+Réponse en cas de succès :
+
+Code `200`
+
+```
+SUCCES : authentification réussie.
+```
+
 ## Listes des requêtes
 
-http://jbmerand-paie-api.herokuapp.com/entreprises
+https://jbmerand-paie-api.herokuapp.com/entreprises
 - [GET] donne la liste simplifiée des entreprises (JSON)
 
-http://jbmerand-paie-api.herokuapp.com/grades
+https://jbmerand-paie-api.herokuapp.com/grades
 - [GET] donne la liste des grades (JSON)
 
-http://jbmerand-paie-api.herokuapp.com/profils_remuneration
+https://jbmerand-paie-api.herokuapp.com/profils_remuneration
 - [GET] donne la liste des profils (JSON)
 
-http://jbmerand-paie-api.herokuapp.com/remuneration_employes
+https://jbmerand-paie-api.herokuapp.com/remuneration_employes
 - [POST] crée une rémunération employé (JSON)
 - [GET] récupérer la liste des employés (rémunérations employé) (JSON)
 
-http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
+https://jbmerand-paie-api.herokuapp.com/bulletins_salaire
 - [POST] crée un bulletin de salaire (JSON)
 - [GET] affiche la liste des bulletins de salaire (JSON)
 
-http://jbmerand-paie-api.herokuapp.com/bulletins_salaire/{idDuBulletinDeSalaire}
+https://jbmerand-paie-api.herokuapp.com/bulletins_salaire/{idDuBulletinDeSalaire}
 - [GET] affiche les données d'une feuille de bulletin de salaire (JSON)
 
 ## Les requêtes en back pour...
@@ -79,7 +107,7 @@ Echec :
 
 Requête  :
 
-[POST] http://jbmerand-paie-api.herokuapp.com/remuneration_employes
+[POST] https://jbmerand-paie-api.herokuapp.com/remuneration_employes
 ```JSON
 {
     "matricule" : "HJS-JS-56",
@@ -108,7 +136,7 @@ ECHEC : {message correspond au type d'erreur recontré}
 
 Requête  :
 
-[POST] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
+[POST] https://jbmerand-paie-api.herokuapp.com/bulletins_salaire
 ```JSON
 {
     "periodeId" : "2",
@@ -136,7 +164,7 @@ ECHEC : {message correspond au type d'erreur recontré}
 
 Requête :
 
-[GET] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire
+[GET] https://jbmerand-paie-api.herokuapp.com/bulletins_salaire
 
 Réponse en cas de réussite :
 
@@ -162,7 +190,7 @@ Réponse en cas de réussite :
 
 Requête :
 
-[GET] http://jbmerand-paie-api.herokuapp.com/bulletins_salaire/{idDuBulletinDeSalaire}
+[GET] https://jbmerand-paie-api.herokuapp.com/bulletins_salaire/{idDuBulletinDeSalaire}
 
 Réponse en cas de réussite :
 

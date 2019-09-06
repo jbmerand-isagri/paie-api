@@ -24,7 +24,7 @@ public class BulletinSalaireControleur {
     public ResponseEntity<String> reqAjouterBulletinSalaire(@Valid @RequestBody BulletinSalaireDtoPost dto,
                                                             Errors errors) {
         if (errors.hasErrors()) {
-            throw new BulletinSalaireException("ERREUR : Un des champs n'est pas renseigné.");
+            throw new BulletinSalaireException("ERREUR : au moins un des champs est mal renseigné. \n" + errors.getAllErrors());
         }
         bulletinSalaireService.insererBulletinSalaire(dto);
         return ResponseEntity.status(201).body("SUCCES : le bulletin a bien été créé.");
